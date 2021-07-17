@@ -30,7 +30,7 @@ var (
 	ErrNotFound = newError("not-found")
 
 	// ErrInvalidCredentials returned when the password or email is invalid
-	ErrInvalidCredentials = newError("not-found")
+	ErrInvalidCredentials = newError("invalid-credentials")
 )
 
 // RestError used as a Rest api call error
@@ -40,9 +40,10 @@ type RestError struct {
 
 // ErrorStatusMap mapping between application erros and status codes
 var ErrorStatusMap = map[string]int{
-	ErrValidationFailed.Key: http.StatusUnprocessableEntity,
-	ErrMalformedJSON.Key:    http.StatusUnprocessableEntity,
-	ErrNotFound.Key:         http.StatusNotFound,
+	ErrValidationFailed.Key:   http.StatusUnprocessableEntity,
+	ErrMalformedJSON.Key:      http.StatusUnprocessableEntity,
+	ErrInvalidCredentials.Key: http.StatusBadRequest,
+	ErrNotFound.Key:           http.StatusNotFound,
 }
 
 // HandleRestError handles applications errors using ErrorStatusMap

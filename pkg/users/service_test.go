@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/Tra-Dew/users/pkg/core"
 	"github.com/Tra-Dew/users/pkg/users"
 	"github.com/Tra-Dew/users/pkg/users/mock"
 	"github.com/bxcodec/faker/v3"
@@ -30,8 +31,14 @@ func (s *serviceTestSuite) SetupSuite() {
 }
 
 func (s *serviceTestSuite) SetupTest() {
+	settings := &core.Settings{
+		JWT: &core.JWT{
+			Secret:              "secret",
+			ExpirationInMinutes: 10,
+		},
+	}
 	s.repository = mock.NewRepository().(*mock.RepositoryMock)
-	s.service = users.NewService(s.repository)
+	s.service = users.NewService(settings, s.repository)
 }
 
 func (s *serviceTestSuite) TestCreate() {

@@ -23,7 +23,7 @@ func NewContainer(settings *core.Settings) *Container {
 	container.Settings = settings
 
 	container.UserRepository = memory.NewRepository()
-	container.UserService = users.NewService(container.UserRepository)
+	container.UserService = users.NewService(settings, container.UserRepository)
 	container.UserController = users.NewController(container.UserService)
 
 	return container

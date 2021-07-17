@@ -2,18 +2,22 @@ package users
 
 import (
 	"context"
+	"time"
 
 	"github.com/Tra-Dew/users/pkg/core"
+	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
 )
 
 type service struct {
+	settings   *core.Settings
 	repository Repository
 }
 
 // NewService ...
-func NewService(repository Repository) Service {
+func NewService(settings *core.Settings, repository Repository) Service {
 	return &service{
+		settings:   settings,
 		repository: repository,
 	}
 }
@@ -50,6 +54,15 @@ func (s *service) Login(ctx context.Context, correlationID string, req *LoginReq
 		return nil, core.ErrInvalidCredentials
 	}
 
-	token := "<token>"
-	return &LoginResponse{Token: token}, nil
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"id":  user.ID,
+		"exp": time.Now().Add(time.Duration(s.settings.JWT.ExpirationInMinutes) * time.Minute),
+	})
+
+	tokenString, err := token.SignedString([]byte(s.settings.JWT.Secret))
+	if err != nil {
+		return nil, err
+	}
+
+	return &LoginResponse{Token: tokenString}, nil
 }

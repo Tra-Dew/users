@@ -25,11 +25,13 @@ func (r *repositoryInMemory) Insert(ctx context.Context, u *users.User) error {
 }
 
 // GetByEmail ...
-func (r *repositoryInMemory) GetByEmail(ctx context.Context, id string) (*users.User, error) {
-	u, exists := r.data[id]
-	if !exists {
-		return nil, core.ErrNotFound
+func (r *repositoryInMemory) GetByEmail(ctx context.Context, email string) (*users.User, error) {
+
+	for _, user := range r.data {
+		if user.Email == email {
+			return user, nil
+		}
 	}
 
-	return u, nil
+	return nil, core.ErrNotFound
 }
