@@ -3,9 +3,9 @@ package users_test
 import (
 	"testing"
 
-	"github.com/Tra-Dew/users/pkg/core"
-	"github.com/Tra-Dew/users/pkg/users"
 	"github.com/bxcodec/faker/v3"
+	"github.com/d-leme/tradew-users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/users"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"

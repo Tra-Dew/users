@@ -3,7 +3,7 @@ package mock
 import (
 	"context"
 
-	"github.com/Tra-Dew/users/pkg/users"
+	"github.com/d-leme/tradew-users/pkg/users"
 	"github.com/stretchr/testify/mock"
 )
 

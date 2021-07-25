@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Tra-Dew/users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/core"
 	"golang.org/x/crypto/bcrypt"
 )
 

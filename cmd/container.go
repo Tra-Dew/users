@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"github.com/Tra-Dew/users/pkg/core"
-	"github.com/Tra-Dew/users/pkg/users"
-	"github.com/Tra-Dew/users/pkg/users/memory"
+	"github.com/d-leme/tradew-users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/users"
+	"github.com/d-leme/tradew-users/pkg/users/memory"
 )
 
 // Container contains all depencies from our api

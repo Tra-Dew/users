@@ -1,4 +1,4 @@
-module github.com/Tra-Dew/users
+module github.com/d-leme/tradew-users
 
 go 1.16
 

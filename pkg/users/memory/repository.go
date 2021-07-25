@@ -3,8 +3,8 @@ package memory
 import (
 	"context"
 
-	"github.com/Tra-Dew/users/pkg/core"
-	"github.com/Tra-Dew/users/pkg/users"
+	"github.com/d-leme/tradew-users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/users"
 )
 
 type repositoryInMemory struct {

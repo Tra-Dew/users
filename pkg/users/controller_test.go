@@ -9,10 +9,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/Tra-Dew/users/pkg/core"
-	"github.com/Tra-Dew/users/pkg/users"
-	"github.com/Tra-Dew/users/pkg/users/mock"
 	"github.com/bxcodec/faker/v3"
+	"github.com/d-leme/tradew-users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/users"
+	"github.com/d-leme/tradew-users/pkg/users/mock"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"

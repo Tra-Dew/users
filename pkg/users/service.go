@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/Tra-Dew/users/pkg/core"
+	"github.com/d-leme/tradew-users/pkg/core"
 	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
 )
