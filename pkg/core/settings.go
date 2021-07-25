@@ -9,5 +9,5 @@ type Settings struct {
 // JWT ...
 type JWT struct {
 	ExpirationInMinutes int64  `yaml:"expiration_in_minutes"`
-	Secret              string `yaml:"jwt_secret"`
+	Secret              string `yaml:"secret"`
 }

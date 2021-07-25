@@ -55,8 +55,8 @@ func (s *service) Login(ctx context.Context, correlationID string, req *LoginReq
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"id":  user.ID,
-		"exp": time.Now().Add(time.Duration(s.settings.JWT.ExpirationInMinutes) * time.Minute),
+		"user_id": user.ID,
+		"exp":     time.Now().Add(time.Duration(s.settings.JWT.ExpirationInMinutes) * time.Minute),
 	})
 
 	tokenString, err := token.SignedString([]byte(s.settings.JWT.Secret))
