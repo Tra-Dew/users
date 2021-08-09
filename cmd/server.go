@@ -12,13 +12,14 @@ import (
 // Server is a cmd to setup api server
 func Server(command *cobra.Command, args []string) {
 
+	logrus.Info("starting the sever")
+
 	settings := new(core.Settings)
 
 	if err := core.FromYAML(command.Flag("settings").Value.String(), settings); err != nil {
 		logrus.
 			WithError(err).
 			Fatal("unable to parse settings, shutting down...")
-		return
 	}
 
 	container := NewContainer(settings)

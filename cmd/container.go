@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"crypto/tls"
 
 	"github.com/d-leme/tradew-users/pkg/core"
 	"github.com/d-leme/tradew-users/pkg/users"
@@ -52,17 +53,28 @@ func (c *Container) Close() {
 }
 
 func connectMongoDB(conf *core.MongoDBConfig) *mongo.Client {
-	client, err := mongo.NewClient(options.Client().ApplyURI(conf.ConnectionString))
+	ctx := context.Background()
+
+	client, err := mongo.NewClient(options.
+		Client().
+		SetTLSConfig(&tls.Config{
+			InsecureSkipVerify: true,
+		}).
+		ApplyURI(conf.ConnectionString))
 
 	if err != nil {
+		logrus.
+			WithError(err).
+			Fatal("error creating MongoDB client")
+	}
+
+	if err := client.Connect(ctx); err != nil {
 		logrus.
 			WithError(err).
 			Fatal("error connecting to MongoDB")
 	}
 
-	client.Connect(context.Background())
-
-	if err = client.Ping(context.Background(), readpref.Primary()); err != nil {
+	if err = client.Ping(ctx, readpref.Primary()); err != nil {
 		logrus.
 			WithError(err).
 			Fatal("error pinging MongoDB")
