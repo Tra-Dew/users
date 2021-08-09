@@ -1,7 +1,7 @@
 # Tradew Users
 
 ## Overview
-The `users` microsevice is responsible for managing all the application users
+The `users` microservice is responsible for managing all the application users
 
 ## Usage
 To start the server on port `9000` run the command:
