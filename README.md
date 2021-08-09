@@ -1,5 +1,8 @@
 # Tradew Users
 
+<div align="center"><img src="docs/logo.png" alt="logo" width="300"/></div>
+
+
 ## Overview
 The `users` microservice is responsible for managing all the application users
 
